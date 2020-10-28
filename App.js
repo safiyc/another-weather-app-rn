@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location'; // location of emulator phone
 
-import { WEATHER_API_KEY } from 'react-native-dotenv';
+import WeatherInfo from './components/WeatherInfo';
 
+import { WEATHER_API_KEY } from 'react-native-dotenv';
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export default function App() {
@@ -47,12 +48,12 @@ export default function App() {
   }
 
   if (currentWeather) {
-    const { main: { temp } } = currentWeather; // 2 level deconstructions of openweather data
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>React Native Weather App</Text>
-        <Text>Temperature: {temp}</Text>
-        <StatusBar style="auto" />
+        <StatusBar style="auto" barStyle='dark-content' hidden={false} backgroundColor='lime' translucent={true} />
+        <View style={styles.main}>
+          <WeatherInfo currentWeather={currentWeather} />
+        </View>
       </View>
     );
   } else {
@@ -69,14 +70,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lime',
-    alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    backgroundColor: 'black',
-    padding: 25
+  main: {
+    flex: 1,
+    justifyContent: 'center'
   }
 });
