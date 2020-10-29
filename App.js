@@ -5,6 +5,7 @@ import * as Location from 'expo-location'; // location of emulator phone
 
 import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
+import ReloadIcon from './components/ReloadIcon';
 import { colors } from './utils/index';
 
 import { WEATHER_API_KEY } from 'react-native-dotenv';
@@ -57,6 +58,7 @@ export default function App() {
         <StatusBar style="auto" barStyle='dark-content' hidden={false} backgroundColor='lime' translucent={true} />
         <View style={styles.main}>
           <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
+          <ReloadIcon load={load} />
           <WeatherInfo currentWeather={currentWeather} />
         </View>
       </View>
