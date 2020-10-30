@@ -6,9 +6,11 @@ import * as Location from 'expo-location'; // location of emulator phone
 import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
 import ReloadIcon from './components/ReloadIcon';
-import { colors } from './utils/index';
+import WeatherDetails from './components/WeatherDetails';
 
+import { colors } from './utils/index';
 import { WEATHER_API_KEY } from 'react-native-dotenv';
+
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export default function App() {
@@ -61,6 +63,7 @@ export default function App() {
           <ReloadIcon load={load} />
           <WeatherInfo currentWeather={currentWeather} />
         </View>
+        <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
       </View>
     );
   } else if (errorMessage) {
