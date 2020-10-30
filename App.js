@@ -54,6 +54,8 @@ export default function App() {
     }
   }
 
+  const tempUnit = unitsSystem === 'metric' ? 'C' : 'F';
+
   if (currentWeather) {
     return (
       <View style={styles.container}>
@@ -61,16 +63,17 @@ export default function App() {
         <View style={styles.main}>
           <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
           <ReloadIcon load={load} />
-          <WeatherInfo currentWeather={currentWeather} />
+          <WeatherInfo currentWeather={currentWeather} tempUnit={tempUnit} />
         </View>
-        <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
+        <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} tempUnit={tempUnit} />
       </View>
     );
   } else if (errorMessage) {
     return (
       <View style={styles.container}>
         {/* <Text style={styles.text}>ERROR!</Text> */}
-        <Text>{errorMessage}</Text>
+        <ReloadIcon load={load} />
+        <Text style={{ textAlign: 'center', fontSize: 20 }}>{errorMessage}</Text>
         <StatusBar style="auto" />
       </View>
     );

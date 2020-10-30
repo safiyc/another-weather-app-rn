@@ -5,7 +5,7 @@ import { colors } from '../utils/index';
 
 const { PRIMARY_COLOR, SECONDARY_COLOR } = colors;
 
-export default function WeatherInfo({ currentWeather }) {
+export default function WeatherInfo({ currentWeather, tempUnit }) {
   const { main: { temp } } = currentWeather; // 2 level deconstructions of openweather data
   const { weather: [details] } = currentWeather;
   const { name } = currentWeather;
@@ -17,7 +17,7 @@ export default function WeatherInfo({ currentWeather }) {
     <View style={styles.weatherInfo}>
       <Text>Location: {name}</Text>
       <Image style={styles.weatherIcon} source={{ uri: iconUrl }} />
-      <Text style={styles.textPrimary}>{temp}°</Text>
+      <Text style={styles.textPrimary}>{temp}°{tempUnit}</Text>
       <Text style={styles.weatherDesc}>{description}</Text>
       <Text style={styles.textSecondary}>{main}</Text>
     </View>

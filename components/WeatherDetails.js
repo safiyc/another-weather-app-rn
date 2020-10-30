@@ -6,7 +6,7 @@ import { colors } from '../utils/index';
 
 const { PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR } = colors;
 
-export default function WeatherDetails({ currentWeather, unitsSystem }) {
+export default function WeatherDetails({ currentWeather, unitsSystem, tempUnit }) {
   const {
     main: { feels_like, humidity, pressure },
     wind: { speed }
@@ -22,7 +22,7 @@ export default function WeatherDetails({ currentWeather, unitsSystem }) {
             <FontAwesome5 name='temperature-low' size={25} color={PRIMARY_COLOR} />
             <View style={styles.weatherDetailsItems}>
               <Text>Feels Like:</Text>
-              <Text style={styles.textSecondary}>{feels_like}°</Text>
+              <Text style={styles.textSecondary}>{feels_like}°{tempUnit}</Text>
             </View>
           </View>
         </View>
